@@ -14,7 +14,7 @@ Install dependencies:
 
 Java8 JDK ([AdoptOpenJDK](https://adoptopenjdk.net/)), python3, git
 
-`pip3 install gym lxml numpy pillow`
+`pip3 install gymnasium lxml numpy pillow`
 
 To prepare Minecraft (after cloning this repository with 
 `git clone https://github.com/Microsoft/malmo.git`):

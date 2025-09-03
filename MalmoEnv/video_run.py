@@ -21,7 +21,7 @@ import malmoenv
 import argparse
 from pathlib import Path
 import time
-import gym
+import gymnasium as gym
 from gym.wrappers.monitoring.video_recorder import VideoRecorder
 
 import logging

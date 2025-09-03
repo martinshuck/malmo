@@ -26,25 +26,25 @@ import numpy as np
 from malmoenv import comms
 from malmoenv.commands import CommandParser
 import uuid
-import gym.spaces
+import gymnasium.spaces
 from malmoenv.comms import retry
 from malmoenv.version import malmo_version
 
 
-class StringActionSpace(gym.spaces.Discrete):
+class StringActionSpace(gymnasium.spaces.Discrete):
     """Malmo actions as their strings."""
     def __init__(self):
-        gym.spaces.Discrete.__init__(self, 1)
+        gymnasium.spaces.Discrete.__init__(self, 1)
 
     def __getitem__(self, action):
         return action
 
 
-class ActionSpace(gym.spaces.Discrete):
+class ActionSpace(gymnasium.spaces.Discrete):
     """Malmo actions as gym action space"""
     def __init__(self, actions):
         self.actions = actions
-        gym.spaces.Discrete.__init__(self, len(self.actions))
+        gymnasium.spaces.Discrete.__init__(self, len(self.actions))
 
     def sample(self):
         return random.randint(1, len(self.actions)) - 1
@@ -56,12 +56,12 @@ class ActionSpace(gym.spaces.Discrete):
         return len(self.actions)
 
 
-class VisualObservationSpace(gym.spaces.Box):
+class VisualObservationSpace(gymnasium.spaces.Box):
     """Space for visual observations: width x height x depth as a flat array.
     Where depth is 3 or 4 if encoding scene depth.
     """
     def __init__(self, width, height, depth):
-        gym.spaces.Box.__init__(self,
+        gymnasium.spaces.Box.__init__(self,
                                 low=np.iinfo(np.uint8).min, high=np.iinfo(np.uint8).max,
                                 shape=(height, width, depth), dtype=np.uint8)
 
